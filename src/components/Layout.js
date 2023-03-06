@@ -6,12 +6,12 @@ import "./all.sass";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = ({ children, forceHeader }) => {
   const { title, description } = useSiteMetadata();
   return (
     <div>
       <Helmet>
-        <html lang="en" />
+        <html lang="en"/>
         <title>{title}</title>
         <meta name="description" content={description} />
 
@@ -47,8 +47,9 @@ const TemplateWrapper = ({ children }) => {
           property="og:image"
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       </Helmet>
-      <Navbar />
+      <Navbar forceHeader={forceHeader}/>
       <div>{children}</div>
       <Footer />
     </div>

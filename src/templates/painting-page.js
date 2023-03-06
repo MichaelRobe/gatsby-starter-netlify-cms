@@ -5,15 +5,17 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 // eslint-disable-next-line
-export const BlogPostTemplate = ({
+export const PaintingPageTemplate = ({
   content,
   contentComponent,
   description,
   tags,
   title,
   helmet,
+  image
 }) => {
   const PostContent = contentComponent || Content;
 
@@ -26,18 +28,19 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
+            <GatsbyImage
+              image={image.childImageSharp.gatsbyImageData}
+            />
             <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>Tags</h4>
-                <ul className="taglist">
+                <div className="tags are-medium">
                   {tags.map((tag) => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
+                    <Link key={tag + `tag`} className="tag is-primary" to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
                   ))}
-                </ul>
+                </div>
               </div>
             ) : null}
           </div>
@@ -47,7 +50,7 @@ export const BlogPostTemplate = ({
   );
 };
 
-BlogPostTemplate.propTypes = {
+PaintingPageTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
@@ -55,12 +58,12 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 };
 
-const BlogPost = ({ data }) => {
+const PaintingPage = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Layout>
-      <BlogPostTemplate
+    <Layout forceHeader={true}>
+      <PaintingPageTemplate
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
@@ -75,21 +78,22 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        image={post.frontmatter.featuredimage}
       />
     </Layout>
   );
 };
 
-BlogPost.propTypes = {
+PaintingPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
 };
 
-export default BlogPost;
+export default PaintingPage;
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query PaintingPageByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
@@ -98,6 +102,16 @@ export const pageQuery = graphql`
         title
         description
         tags
+        featuredimage {
+          publicURL
+          childImageSharp {
+            gatsbyImageData(
+              quality: 100
+              layout: FULL_WIDTH
+            )
+
+          }
+        }
       }
     }
   }

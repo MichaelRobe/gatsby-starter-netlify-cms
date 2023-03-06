@@ -4,13 +4,12 @@ import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
-import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage";
 import Content, { HTMLContent } from "../components/Content";
 
 // eslint-disable-next-line
-export const IndexPageTemplate = ({
+export const GalleryPageTemplate = ({
   image,
   title,
   subheading,
@@ -33,7 +32,7 @@ export const IndexPageTemplate = ({
                     <PageContent className="content" content={content} />
                   </div>
                   <div className="column is-12">
-                    <BlogRoll displaycount={6}/>
+                    <BlogRoll displaycount={100}/>
                     <div className="column is-12 has-text-centered">
                       <Link className="button is-primary is-outlined" to="/blog">
                         <span>See more</span>
@@ -53,7 +52,7 @@ export const IndexPageTemplate = ({
   );
 };
 
-IndexPageTemplate.propTypes = {
+GalleryPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   subheading: PropTypes.string,
@@ -66,7 +65,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout>
-      <IndexPageTemplate
+      <GalleryPageTemplate
         image={page.frontmatter.image}
         title={page.frontmatter.title}
         subheading={page.frontmatter.subheading}
@@ -88,8 +87,8 @@ IndexPage.propTypes = {
 export default IndexPage;
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+  query GalleryPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "gallery-page" } }) {
       html
       frontmatter {
         title

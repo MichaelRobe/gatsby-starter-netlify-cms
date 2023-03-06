@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
-import github from "../img/github-icon.svg";
-import logo from "../img/logo.svg";
+import useScrollPosition from "./hooks/useScrollPosition";
+import { Location } from '@reach/router'
 
-const Navbar = () => {
+const Navbar = ({forceHeader}) => {
   const [isActive, setIsActive] = useState(false);
-
+  const scrollPosition = useScrollPosition();
   return (
     <nav
-      className="navbar is-transparent"
+      className={(scrollPosition > 30) || forceHeader? "navbar is-transparent is-fixed-top is-white" : "navbar is-transparent is-fixed-top"}
       role="navigation"
       aria-label="main-navigation"
     >
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item" title="Logo">
-            <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
+            <h1>LORNA ROBERTSON</h1>
           </Link>
           {/* Hamburger menu */}
           <button
@@ -28,49 +28,31 @@ const Navbar = () => {
             <span />
           </button>
         </div>
-        <ul id="navMenu" className={` navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
+        <div id="navMenu" className={` navbar-end has-text-centered navbar-menu ${isActive && "is-active"}`}>
             {/* TODO: inline override of padding is a result of refactoring
                 to a ul for accessibilty purposes, would like to see a css
                 re-write that makes this unneccesary.
              */}
-            <li className="navbar-item" style={{padding: "0px"}}>
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-            </li>
-            <li className="navbar-item" style={{padding: "0px"}}>
-            <Link className="navbar-item" to="/products">
-              Products
+            
+            <Link className="navbar-item" activeClassName="active" to="/about">
+              About
             </Link>
-            </li>
-            <li className="navbar-item" style={{padding: "0px"}}>
-            <Link className="navbar-item" to="/blog">
-              Blog
+            
+            <Link className="navbar-item" activeClassName="active" to="/gallery">
+              Paintings
             </Link>
-            </li>
-            <li className="navbar-item" style={{padding: "0px"}}>
-            <Link className="navbar-item" to="/contact">
+            
+            
+            <Link className="navbar-item" activeClassName="active" to="/contact">
               Contact
             </Link>
-            </li>
-            <li className="navbar-item" style={{padding: "0px"}}>
-            <Link className="navbar-item" to="/contact/examples">
+            
+            
+            <Link className="navbar-item" activeClassName="active" to="/contact/examples">
               Form Examples
             </Link>
-            </li>
-          <li className="navbar-end has-text-centered">
-            <a
-              className="navbar-item"
-              href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="icon">
-                <img src={github} alt="Github" />
-              </span>
-            </a>
-          </li>
-        </ul>
+            
+        </div>
       </div>
     </nav>
   );

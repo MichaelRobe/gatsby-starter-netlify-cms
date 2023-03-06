@@ -1,15 +1,23 @@
 @import "~bulma/sass/utilities/initial-variables"
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,300;0,400;1,400&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&family=Raleway:wght@100;200;300;400&display=swap')
 
 // Config vars
 // Kaldi logo brand color: #FD461E
 $kaldi-red: #D64000
 $kaldi-red-invert: #fff
 
-$primary: $kaldi-red
+
+$primary: #0b5d8d
 $primary-invert: $kaldi-red-invert
 $body-color: #333
-$black: #2b2523
+$black: #1a1919
 
+$navbar-background-color: transparent
+
+//$family-primary: 'Bitter', serif
+.navbar 
+  transition: background-color 250ms linear
 .navbar .navbar-menu
   box-shadow: none !important
 
@@ -80,9 +88,7 @@ $black: #2b2523
   fill: currentColor
 .navbar-brand .navbar-item.logo
   padding: 0 1rem
-footer.footer
-  padding: 3rem 0rem 0rem
-  background-color: transparent
+
 
 //Menu overrides
 $menu-item-color: $white-ter
@@ -92,41 +98,190 @@ $menu-item-active-color: $kaldi-red-invert
 $menu-item-active-background-color:	$kaldi-red-invert
 $menu-list-border-left: 1px solid $kaldi-red-invert
 $menu-label-color: $white-ter
-
-
+$navbar-item-color: $white-ter
+$navbar-item-hover-color: $white-ter
+a.navbar-item
+  display: block
+  margin: auto 0 auto 0 
+  letter-spacing: 2px
+#navMenu .navbar-item:after 
+  display: block
+  margin: 0 auto
+  left: 0
+  right: 0
+  width: 60%
+  content: ''
+  border-bottom: solid 1px
+  transform: scaleX(0)  
+  transition: transform 250ms ease-in-out
+  transform-origin: 100% 50%
+#navMenu .navbar-item:hover:after 
+  transform: scaleX(1)
+  transform-origin: 0% 50%
+.navbar-item.active
+  font-weight: 600
+  letter-spacing: 3px
+  color: $primary !important
 .menu-label
   font-size: 1em !important
   text-align: left
 .menu-list
   list-style: none !important
   text-align: left
-.social
-  padding: 2em
-.social a
-    padding: .5em .5em .3em .5em
-    border-radius: 1em
-    background-color: $white-ter
-    margin: .5em
-    width: 1em
-    height: 1em
-    vertical-align: middle
-    display: inline
 
-// blog roll
-.blog-list-item.is-featured
-  background-color: #d6400033
-.blog-list-item header
-  display: flex
-  margin-bottom: 1em
-.blog-list-item .featured-thumbnail
-  flex-basis: 35%
-  margin: 0 1.5em 0 0
 
+// Variables
+
+$footer-padding: 2rem 0 2rem
+
+.content 
+  .gap > div
+    display: flex
+    flex-direction: column
+    gap: 1.5rem
+  .gallery-link
+    z-index: 10
+    .gallery-image
+      overflow: hidden
+      i 
+        z-index: 1
+        margin: auto
+        font-size: 4em
+        color: $white
+        transform: scale(0)
+        -webkit-transition: all 0.2s ease-in-out 0s
+        -moz-transition: all 0.2s ease-in-out 0s
+        transition: all 0.2s ease-in-out 0s
+        &:hover
+          color: $primary
+      img
+        -webkit-transition: all 0.2s ease-in-out 0s
+        -moz-transition: all 0.2s ease-in-out 0s
+        transition: all 0.2s ease-in-out 0s
+      &:hover 
+        i
+          transform: scale(1)
+        .overlay
+          opacity: 1
+        img 
+          transform: scale(1.1)
+          filter: brightness(50%)
+          -webkit-transition: all 0.2s ease-in-out 0s
+          -moz-transition: all 0.2s ease-in-out 0s
+          transition: all 0.2s ease-in-out 0s
+
+.tags 
+  a.tag
+    -webkit-transition: all 0.2s ease-in-out 0s
+    -moz-transition: all 0.2s ease-in-out 0s
+    transition: all 0.2s ease-in-out 0s
+    &:hover
+      background-color: $grey-light
+      color: $primary-invert
+      text-decoration: none
+
+.footer    
+  .footer-title
+    h1
+      color: $white 
+      text-transform: uppercase
+      font-size: 3em
+      font-weight: 100 
+      letter-spacing: 10px
+      margin: 0
+  .footer-menu-col   
+    margin: auto 
+    .footer-menu
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+      a
+        color: $white
+        padding: 5px
+        text-transform: uppercase
+        overflow: hidden
+        display: inline-block
+        background: linear-gradient(to right, $primary, $primary 50%, $white 50%)
+        background-clip: text
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+        background-size: 200% 100%
+        background-position: 100%
+        transition: background-position 275ms ease
+        &:hover
+          background-position: 0 100%
+  .social
+    padding: 2em
+    margin: auto
+    a
+      padding: .5em .5em .3em .5em
+      border-radius: 1em
+      background-color: $white-ter
+      margin: .5em
+      width: 1em
+      height: 1em
+      vertical-align: middle
+      overflow: hidden
+      display: inline
+      background: linear-gradient(to right, $primary, $primary 50%, $white 50%)
+      background-size: 200% 100%
+      background-position: 100%
+      transition: background-position 275ms ease
+      &:hover
+        background-position: 0 100%
+
+.button
+  -webkit-transition: all 0.2s ease-in-out 0s
+    -moz-transition: all 0.2s ease-in-out 0s
+    transition: all 0.2s ease-in-out 0s
+  .icon
+    -webkit-transition: transform 0.4s ease
+    -moz-transition: transform 0.4s ease
+    transition: transform 0.4s ease
+  &:hover
+    .icon:last-child:not(:first-child)
+      
+      transform: translateX(3px)
 
 @import "~bulma"
 
+// footer fix
+
+footer
+  box-shadow: 0 50vh 0 50vh  $black 
 
 // responsiveness
++touch
+  .navbar 
+    width: 80%
+    margin: auto
+    background-color: $white
+    color: $black
+    box-shadow: 0 8px 16px rgba(10,10,10,.1)
+    border-radius: $radius
+    margin-top: 2vh
+    .navbar-brand, a.navbar-item, .navbar-link, .navbar-burger
+      color: $black
+      &:hover
+        color: $black
+    .navbar-brand
+      a.navbar-item
+        &:hover
+          background-color: $white !important
+    #navMenu 
+      a.navbar-item
+        &::after
+          display: none
+  #navMenu
+    padding: 0
+    -webkit-transition: all 0.2s ease-in-out 0s
+    -moz-transition: all 0.2s ease-in-out 0s
+    transition: all 0.2s ease-in-out 0s
+    display: block
+    &:not(.is-active)
+      max-height: 0px
+      
+    
 +tablet-only
   .blog-list-item .featured-thumbnail
     flex-basis: 50%
