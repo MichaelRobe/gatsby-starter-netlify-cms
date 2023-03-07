@@ -23,9 +23,6 @@ const Footer = () => {
                       <Link to="/about">
                         About
                       </Link>
-                      <Link  to="/contact/examples">
-                        Form Examples
-                      </Link>
                       <a
                         href="/admin/"
                         target="_blank"

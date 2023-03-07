@@ -46,12 +46,6 @@ const Navbar = ({forceHeader}) => {
             <Link className="navbar-item" activeClassName="active" to="/contact">
               Contact
             </Link>
-            
-            
-            <Link className="navbar-item" activeClassName="active" to="/contact/examples">
-              Form Examples
-            </Link>
-            
         </div>
       </div>
     </nav>

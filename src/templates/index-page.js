@@ -35,7 +35,7 @@ export const IndexPageTemplate = ({
                   <div className="column is-12">
                     <BlogRoll displaycount={6}/>
                     <div className="column is-12 has-text-centered">
-                      <Link className="button is-primary is-outlined" to="/blog">
+                      <Link className="button is-primary is-outlined" to="/gallery">
                         <span>See more</span>
                         <span class="icon">
                           <i class="fas fa-arrow-right"></i>
