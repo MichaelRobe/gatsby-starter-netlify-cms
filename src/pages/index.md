@@ -4,13 +4,11 @@ title: Page Title
 image: /img/mix-colors-grafitti-abstract-4k-lw.jpg
 subheading: Sub Header
 ---
-# Shade-grown coffee
+# TEST
 
 Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. 
 
 > Quote sdf sdf sdfsdfsdfds fsd fsdfs df sd f
-
-
 
 ![mug](/img/products-grid2.jpg "mug")
 
