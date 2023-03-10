@@ -9,7 +9,12 @@ import { withPrefix } from "gatsby";
 const TemplateWrapper = ({ children, forceHeader }) => {
   const { title, description } = useSiteMetadata();
   return (
-    <div>
+    <div 
+      style={{
+        position: "relative",
+        minHeight: "100vh"
+      }}
+    >
       <Helmet>
         <html lang="en"/>
         <title>{title}</title>
@@ -50,7 +55,11 @@ const TemplateWrapper = ({ children, forceHeader }) => {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       </Helmet>
       <Navbar forceHeader={forceHeader}/>
-      <div>{children}</div>
+      <div
+        style={{
+          paddingBottom: "5em"
+        }}
+      >{children}</div>
       <Footer />
     </div>
   );
