@@ -2,7 +2,7 @@
 templateKey: about-page
 path: /about
 title: About our values
-image: /img/4240393.jpg
+image: /img/27665d39fea1f969962c0faa4877addb.jpg
 subheading: About Subheading
 ---
 ### Shade-grown coffee
