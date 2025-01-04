@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Page Title
-image: /img/mix-colors-grafitti-abstract-4k-lw.jpg
+image: /img/27665d39fea1f969962c0faa4877addb.jpg
 subheading: Sub Header
 ---
 # TEST
